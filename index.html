@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Группа компаний Neiry</title>
+<meta name="description" content="ГК Neiry — лидер в области разработки и применения нейротехнологий и нейропродуктов">
+<meta property="og:title" content="Группа компаний Neiry">
+<meta property="og:description" content="Вертикально интегрированная группа, собранная с целью потокового запуска прорывных нейропродуктов">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000; --bg2:#0c0b0a; --card:#141210; --line:#2a251f;
+  --fg:#f5f1ea; --mute:#9a9288;
+  --g1:#885c30; --g2:#e7b769; --g3:#f2d5a2;
+  --gold:linear-gradient(90deg,var(--g1) 0%,var(--g2) 35%,var(--g3) 65%,#fff 100%);
+  --r:20px; --w:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:Manrope,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 20px}
+section{padding:96px 0}
+h2{font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:40px}
+.gold{background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-block;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g2);border:1px solid var(--line);border-radius:99px;padding:4px 10px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:99px;font-weight:700;font-size:15px;background:var(--gold);color:#1a1208;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(231,183,105,.25)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--g2);box-shadow:none}
+.more{display:inline-flex;margin-top:32px}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,backdrop-filter .3s}
+header.scrolled{background:rgba(0,0,0,.75);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:800;font-size:28px;letter-spacing:-.04em}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--mute)}
+.nav ul a:hover{color:var(--fg)}
+.lang{font-size:14px;color:var(--mute)}
+.lang b{color:var(--fg)}
+@media(max-width:860px){.nav ul{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:120px 0 80px}
+.hero svg.bg{position:absolute;right:-10%;top:8%;width:min(900px,110vw);opacity:.95;pointer-events:none}
+.hero h1{font-size:clamp(88px,18vw,240px);font-weight:800;line-height:.85;letter-spacing:-.06em}
+.hero .sub{font-size:15px;color:var(--mute);margin:12px 0 48px}
+.hero p.lead{font-size:clamp(20px,2.4vw,30px);font-weight:700;max-width:640px;line-height:1.25}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero .content{position:relative;z-index:2}
+
+/* news */
+.news{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.news a{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px;min-height:220px;transition:border-color .2s,transform .2s}
+.news a:hover{border-color:var(--g1);transform:translateY(-3px)}
+.news h3{font-size:19px;line-height:1.3;font-weight:700;flex:1}
+.news .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);letter-spacing:.04em}
+.news a.feat{grid-column:span 2;background:radial-gradient(120% 120% at 100% 0%,rgba(231,183,105,.22),transparent 60%),var(--card)}
+.news a.feat h3{font-size:28px}
+@media(max-width:640px){.news a.feat{grid-column:auto}}
+
+/* about */
+.about{background:var(--bg2)}
+.mission{font-size:clamp(24px,3.4vw,44px);font-weight:800;line-height:1.15;max-width:900px;margin-bottom:56px}
+.cos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.co{border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:12px;background:var(--card)}
+.co b{font-size:22px}
+.co span{color:var(--mute);font-size:14px;flex:1}
+.co a{color:var(--g2);font-weight:700;font-size:14px}
+.clients{margin-top:56px}
+.clients p{color:var(--mute);font-size:14px;margin-bottom:16px}
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee div{display:flex;gap:48px;width:max-content;animation:mq 30s linear infinite;font-weight:800;font-size:26px;color:#5d564d}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* clusters */
+.clusters{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.cl{border:1px solid var(--line);border-radius:var(--r);padding:28px;min-height:200px;display:flex;flex-direction:column;gap:10px;background:var(--card);position:relative;overflow:hidden}
+.cl h3{font-size:26px;font-weight:800}
+.cl p{color:var(--mute);font-size:15px;flex:1}
+.cl .soon{font-size:12px;color:var(--g2)}
+.cl a.d{font-weight:700;font-size:14px;color:var(--g2)}
+.cl::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(231,183,105,.18),transparent 70%)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.stat{background:var(--bg);padding:36px 28px}
+.stat b{display:block;font-size:clamp(44px,6vw,72px);font-weight:800;line-height:1;letter-spacing:-.03em}
+.stat span{color:var(--mute);font-size:15px}
+@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}}
+
+/* strategy */
+.strat{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.strat > div{border:1px solid var(--line);border-radius:var(--r);padding:32px;background:var(--card)}
+.strat h3{font-size:24px;margin-bottom:12px}
+.strat p{color:var(--mute)}
+.strat a{display:inline-block;margin-top:18px;color:var(--g2);font-weight:700}
+@media(max-width:760px){.strat{grid-template-columns:1fr}}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.p{border:1px solid var(--line);border-radius:var(--r);padding:22px;background:var(--card)}
+.av{width:56px;height:56px;border-radius:50%;background:var(--gold);color:#1a1208;display:grid;place-items:center;font-weight:800;font-size:18px;margin-bottom:16px}
+.p b{display:block;font-size:17px;margin-bottom:6px}
+.p span{color:var(--mute);font-size:13px;line-height:1.4;display:block}
+
+/* video */
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.vids a{border:1px solid var(--line);border-radius:var(--r);aspect-ratio:16/9;display:flex;align-items:flex-end;padding:22px;font-weight:700;font-size:18px;position:relative;background:linear-gradient(160deg,#1c1813,#060504)}
+.vids a::before{content:"";position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:var(--gold);box-shadow:0 0 40px rgba(231,183,105,.35)}
+.vids a::after{content:"";position:absolute;left:50%;top:42%;transform:translate(-35%,-50%);border:11px solid transparent;border-left:17px solid #1a1208}
+
+/* press */
+.press{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.press a{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:var(--card);display:flex;flex-direction:column;gap:12px;transition:border-color .2s}
+.press a:hover{border-color:var(--g1)}
+.press .src{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);letter-spacing:.06em}
+.press .src b{color:var(--g2)}
+.press h3{font-size:19px;line-height:1.3}
+.press p{color:var(--mute);font-size:14px}
+@media(max-width:400px){.press{grid-template-columns:1fr}}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--mute);font-size:14px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer .logo{color:var(--fg);margin-bottom:14px;display:block}
+footer a:hover{color:var(--fg)}
+footer ul{list-style:none;display:grid;gap:8px}
+.copy{margin-top:40px;font-size:12px}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.marquee div{animation:none}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="logo">нейри</a>
+    <ul>
+      <li><a href="#news">Новости</a></li>
+      <li><a href="#about">О группе</a></li>
+      <li><a href="#clusters">Кластеры</a></li>
+      <li><a href="#strategy">Инвесторам</a></li>
+      <li><a href="#team">Команда</a></li>
+      <li><a href="#press">СМИ</a></li>
+    </ul>
+    <div class="lang"><b>ru</b> / <a href="https://neiry.ru/en">en</a></div>
+  </div>
+</header>
+
+<section class="hero">
+  <!-- лёгкая векторная замена тяжёлого PNG-электрода -->
+  <svg class="bg" viewBox="0 0 800 700" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#885c30"/><stop offset=".35" stop-color="#e7b769"/>
+        <stop offset=".65" stop-color="#f2d5a2"/><stop offset="1" stop-color="#885c30"/>
+      </linearGradient>
+      <radialGradient id="glow"><stop offset="0" stop-color="#e7b769" stop-opacity=".35"/><stop offset="1" stop-color="#e7b769" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="470" cy="300" r="300" fill="url(#glow)"/>
+    <g stroke="url(#gg)" stroke-linecap="round">
+      <path d="M40 620 C 160 420, 260 120, 470 160 S 720 330, 760 210" stroke-width="70" opacity=".22"/>
+      <path d="M40 620 C 160 420, 260 120, 470 160 S 720 330, 760 210" stroke-width="2"/>
+      <g stroke-width="1.6" opacity=".9">
+        <path d="M70 600 C 180 410, 270 145, 470 182 S 705 345, 748 235"/>
+        <path d="M100 580 C 200 400, 280 170, 470 204 S 690 360, 736 260"/>
+        <path d="M130 560 C 220 390, 290 195, 470 226 S 675 375, 724 285"/>
+        <path d="M10 640 C 140 430, 250 95, 470 138 S 735 315, 772 185"/>
+        <path d="M-20 660 C 120 440, 240 70, 470 116 S 750 300, 784 160"/>
+      </g>
+      <g stroke-width="1.4">
+        <path d="M470 160 l40 -60 h50"/><path d="M500 180 l60 -40 h40"/><path d="M520 210 l70 -10"/>
+        <path d="M530 240 l60 20 h30"/><path d="M480 140 l10 -70"/>
+      </g>
+    </g>
+    <g fill="#f2d5a2"><circle cx="560" cy="100" r="5"/><circle cx="600" cy="140" r="5"/><circle cx="590" cy="200" r="5"/><circle cx="620" cy="260" r="5"/><circle cx="490" cy="70" r="5"/></g>
+  </svg>
+  <div class="wrap content">
+    <h1>нейри</h1>
+    <div class="sub">нейротех — это мы</div>
+    <p class="lead">Вертикально интегрированная группа, собранная с&nbsp;целью потокового запуска прорывных нейропродуктов</p>
+    <div class="cta">
+      <a class="btn" href="https://t.me/NeiryEquityBot?start=neiry-website" target="_blank" rel="noopener">Перейти в InfoBot →</a>
+      <a class="btn ghost" href="#about">О группе компаний</a>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="wrap">
+    <h2 class="reveal">Главные новости</h2>
+    <div class="news">
+      <a class="feat reveal" href="https://neiry.ru/news/tpost/rpifzpkc01-smotrite-translyatsiyu-neiryvisionroundc" target="_blank" rel="noopener">
+        <span class="tag">Video</span><h3>Смотрите трансляцию Neiry Vision. Round C</h3>
+        <div class="meta"><span>11 марта 2026</span><span>4 минуты чтения</span></div></a>
+      <a class="reveal" href="https://neiry.ru/news/tpost/0d8civnm91-neiry-obyavila-o-zakritii-raunda-na-500" target="_blank" rel="noopener">
+        <span class="tag">Corporate</span><h3>Neiry объявила о закрытии раунда на 500 млн рублей и запуске нового на 1 млрд рублей</h3>
+        <div class="meta"><span>25 февраля 2026</span><span>2 мин</span></div></a>
+      <a class="reveal" href="https://neiry.ru/news/tpost/6gb8rf4p71-poluchili-9-registratsionnoe-udostoveren" target="_blank" rel="noopener">
+        <span class="tag">Medical</span><h3>Получили девятое регистрационное удостоверение в России</h3>
+        <div class="meta"><span>31 марта 2026</span><span>4 мин</span></div></a>
+      <a class="reveal" href="https://neiry.ru/news/tpost/16p4tddui1-neiry-obyavlyaet-o-starte-nabora-na-usta" target="_blank" rel="noopener">
+        <span class="tag">Medical</span><h3>Neiry объявляет о старте набора на установку нейроимплантов людям</h3>
+        <div class="meta"><span>25 февраля 2026</span><span>2 мин</span></div></a>
+      <a class="reveal" href="https://neiry.ru/news/tpost/ga779lreb1-unikalnie-tonkoplenochnie-elektrodi-novo" target="_blank" rel="noopener">
+        <span class="tag">Medical</span><h3>Тонкопленочные электроды нового поколения Neiry тоньше человеческого волоса</h3>
+        <div class="meta"><span>1 августа 2025</span><span>2 мин</span></div></a>
+      <a class="reveal" href="https://neiry.ru/news/tpost/h76nygaa01-neiry-predstavlyaet-ptits-biodronov" target="_blank" rel="noopener">
+        <span class="tag">Smart Animals</span><h3>Neiry представляет птиц-биодронов</h3>
+        <div class="meta"><span>25 ноября 2025</span><span>3 мин</span></div></a>
+      <a class="reveal" href="https://neiry.ru/news/tpost/cvyosn4l71-neiryconf-2025-bioroboti-i-drugie-novink" target="_blank" rel="noopener">
+        <span class="tag">Video</span><h3>Neiry.Conf 2025 — ежегодная конференция для акционеров, визионеров, соискателей и партнёров</h3>
+        <div class="meta"><span>2 декабря 2025</span><span>2 мин</span></div></a>
+    </div>
+    <a class="btn ghost more" href="https://neiry.ru/news" target="_blank" rel="noopener">Смотреть все новости</a>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <h2 class="reveal">О группе компаний Нейри</h2>
+    <p class="mission reveal">Приближаем следующую стадию эволюции человечества с&nbsp;помощью нейротеха. Наша миссия: <span class="gold">Viva Homo Perfectus.</span></p>
+    <p class="reveal" style="color:var(--mute);margin-bottom:20px">Продуктовые компании в составе группы — и их количество постоянно растёт:</p>
+    <div class="cos">
+      <div class="co reveal"><b>Нейротех</b><span>Медицинские устройства и нейроэлектроника</span><a href="https://neurotech.ru/" target="_blank" rel="noopener">перейти на сайт →</a></div>
+      <div class="co reveal"><b>Нейротренд</b><span>Нейромаркетинговые исследования и лаборатории</span><a href="https://neurotrend.ru/" target="_blank" rel="noopener">перейти на сайт →</a></div>
+      <div class="co reveal"><b>Neiry Research</b><span>Исследования и R&amp;D</span><a href="https://research.neiry.ru/" target="_blank" rel="noopener">перейти на сайт →</a></div>
+    </div>
+    <div class="clients reveal">
+      <p>Нашими технологиями пользуются</p>
+      <div class="marquee"><div>
+        <span>Boeing</span><span>L'Oréal</span><span>Mars</span><span>PepsiCo</span><span>Nestlé</span><span>Департамент культуры Москвы</span>
+        <span>Boeing</span><span>L'Oréal</span><span>Mars</span><span>PepsiCo</span><span>Nestlé</span><span>Департамент культуры Москвы</span>
+      </div></div>
+    </div>
+    <a class="btn ghost more" href="https://neiry.ru/about-us" target="_blank" rel="noopener">Больше о группе компаний</a>
+  </div>
+</section>
+
+<section id="clusters">
+  <div class="wrap">
+    <h2 class="reveal">Кластеры группы компаний</h2>
+    <div class="clusters">
+      <div class="cl reveal"><h3>Medical Devices</h3><p>Медицинские устройства для неврологов и других врачей</p><a class="d" href="https://neiry.ru/products#medical" target="_blank" rel="noopener">Подробнее →</a></div>
+      <div class="cl reveal"><h3>Mental &amp; API</h3><p>Ментальное здоровье, нейропрофориентация, комплексы биофидбека (БОС), а также платформа для создания собственных нейропродуктов</p><a class="d" href="https://neiry.ru/products#mental" target="_blank" rel="noopener">Подробнее →</a></div>
+      <div class="cl reveal"><h3>Neuromarketing</h3><p>Маркетинговые исследования, нейромаркетинговые лаборатории и продажа больших данных</p><a class="d" href="https://neiry.ru/products#neuromarketing" target="_blank" rel="noopener">Подробнее →</a></div>
+      <div class="cl reveal"><h3>Animal Farming</h3><p>Повышение эффективности животноводства за счёт нейростимуляции</p><a class="d" href="https://neiry.ru/products#animalfarming" target="_blank" rel="noopener">Подробнее →</a></div>
+      <div class="cl reveal"><h3>BioDrones</h3><p>Дроны на базе биологических носителей с нейроимплантами для промышленного применения</p><span class="soon">Направление в разработке, информация скоро появится</span></div>
+      <div class="cl reveal"><h3>Neuro Clinic</h3><p>Лечение нейростимуляцией в неврологии и психиатрии, профилактика ментального и когнитивного здоровья</p><span class="soon">Направление в разработке, информация скоро появится</span></div>
+    </div>
+    <a class="btn ghost more" href="https://neiry.ru/products" target="_blank" rel="noopener">Узнать больше</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="reveal">Ключевые цифры</h2>
+    <div class="stats reveal">
+      <div class="stat"><b class="gold">~1 млрд</b><span>выручка за 2025 г. в рублях</span></div>
+      <div class="stat"><b class="gold">&gt;20</b><span>нейрохирургических операций в месяц</span></div>
+      <div class="stat"><b class="gold">300+</b><span>сотрудников</span></div>
+      <div class="stat"><b class="gold">10</b><span>медицинских рег. удостоверений</span></div>
+      <div class="stat"><b class="gold">40</b><span>стран дистрибуции</span></div>
+      <div class="stat"><b class="gold">55</b><span>продуктов</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="strategy" class="about">
+  <div class="wrap">
+    <h2 class="reveal">Стратегия компании и инвестиционные перспективы</h2>
+    <div class="strat">
+      <div class="reveal"><h3>Инвестиционная стратегия</h3><p>Создаём новые нейротехнологии и нейропродукты объединённой экспертизой лучших компаний отрасли, а по дороге повышаем их эффективность.</p><a href="https://neiry.ru/investors" target="_blank" rel="noopener">Подробнее →</a></div>
+      <div class="reveal"><h3>Бизнес-стратегия</h3><p>Стремимся сделать нейротехнологии частью повседневной жизни через создание интегрированной R&amp;D-экосистемы, объединяющей специалистов медицины, инженерии и науки для разработки коммерчески успешных продуктов.</p><a href="https://neiry.ru/strategy" target="_blank" rel="noopener">Подробнее →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <h2 class="reveal">Ключевые лица группы компаний</h2>
+    <div class="team">
+      <div class="p reveal"><div class="av">ВС</div><b>Вадим Сахаров</b><span>CTO, Нейри. CEO, Нейротех. Инженер, к.т.н., доцент, предприниматель</span></div>
+      <div class="p reveal"><div class="av">ПК</div><b>Павел Колосов</b><span>CIO, Нейри, ex-PwC</span></div>
+      <div class="p reveal"><div class="av">АЛ</div><b>Анастасия Лисовцева</b><span>COO, Нейри, ex-Яндекс</span></div>
+      <div class="p reveal"><div class="av">ВР</div><b>Валерия Раевская</b><span>CEO, Neiry Research, ex-СберБанк</span></div>
+      <div class="p reveal"><div class="av">МЛ</div><b>Михаил Лебедев</b><span>CSO, Нейри. Профессор МГУ. Воспитал сооснователей и исследователей Neuralink. Индекс Хирша: 54 (Google Scholar), 42 (Scopus)</span></div>
+      <div class="p reveal"><div class="av">ВК</div><b>Владимир Кирксов</b><span>GR, Нейри</span></div>
+      <div class="p reveal"><div class="av">АМ</div><b>Анатолий Минюк</b><span>COO, Нейротех</span></div>
+      <div class="p reveal"><div class="av">СВ</div><b>Светлана Васюкова</b><span>CCO, Нейротех</span></div>
+      <div class="p reveal"><div class="av">ДА</div><b>Дмитрий Алексеев</b><span>CTO, Нейротех. Руководитель проекта по разработке инвазивной электроники ПУСИН, Нейри</span></div>
+      <div class="p reveal"><div class="av">АБ</div><b>Александр Бубенок</b><span>CPO, инвазивное направление, Нейри, НейроРога, ex-Яндекс</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <h2 class="reveal">Полезные видео</h2>
+    <div class="vids">
+      <a class="reveal" href="https://www.youtube.com/@neiry-bci" target="_blank" rel="noopener">Разбираем конкурентов Нейри</a>
+      <a class="reveal" href="https://www.youtube.com/@neiry-bci" target="_blank" rel="noopener">Мозг и нейросети: ждём слияния</a>
+      <a class="reveal" href="https://neiry.ru/news/tpost/cvyosn4l71-neiryconf-2025-bioroboti-i-drugie-novink" target="_blank" rel="noopener">Neiry.Conf 2025: Биороботы и другие новинки нейротеха</a>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap" class="more">
+      <a class="btn ghost" href="https://www.youtube.com/@neiry-bci" target="_blank" rel="noopener">YouTube</a>
+      <a class="btn ghost" href="https://rutube.ru/channel/43106298/" target="_blank" rel="noopener">Rutube</a>
+    </div>
+  </div>
+</section>
+
+<section id="press">
+  <div class="wrap">
+    <h2 class="reveal">СМИ о нас</h2>
+    <div class="press">
+      <a class="reveal" href="https://hi-tech.mail.ru/news/149661-v-rossii-nauchili-nejrokrys-hodit-na-trenirovki-avtomaticheski/" target="_blank" rel="noopener">
+        <div class="src"><b>Hi-Tech Mail</b><span>16 JUN 2026</span></div><h3>В России научили нейрокрыс ходить на тренировки автоматически</h3><p>Лаборатория Neiry автоматизировала обучение крыс, заменив операторов на ИИ-модели видеоаналитики.</p></a>
+      <a class="reveal" href="https://www.forbes.ru/tekhnologii/550131-v-moskve-ispytali-v-polete-golubej-biodronov-s-nejrointerfejsami-rossijskoj-neiry" target="_blank" rel="noopener">
+        <div class="src"><b>Forbes</b><span>25 NOV 2025</span></div><h3>В Москве испытали в полёте голубей-биодронов с нейроинтерфейсами российской Neiry</h3><p>Первая стая голубей-биодронов с имплантированными нейроинтерфейсами: длительное время работы и дистанция применения.</p></a>
+      <a class="reveal" href="https://www.forbes.ru/svoi-biznes/547602-gibridnyj-intellekt-kak-dipteh-startap-neiry-ulucsaet-mozg-zivotnyh-i-ludej" target="_blank" rel="noopener">
+        <div class="src"><b>Forbes</b><span>14 OCT 2025</span></div><h3>Гибридный интеллект: как диптех-стартап Neiry «улучшает» мозг животных и людей</h3><p>Более 1 млрд рублей инвестиций за пять лет, собственные нейрогарнитуры и присоединение двух конкурентов.</p></a>
+      <a class="reveal" href="https://www.gazetametro.ru/articles/kryse-pifii-vskryli-cherep-i-otpravili-v-stratosferu-s-nejroimplantami-v-mozgu-27-06-2025" target="_blank" rel="noopener">
+        <div class="src"><b>Metro</b><span>27 JUN 2025</span></div><h3>Как крысу Пифию отправили в стратосферу с нейроимплантами в мозгу</h3><p>Первый в России эксперимент, когда крысы с нейроимплантами покоряли верхние слои атмосферы.</p></a>
+      <a class="reveal" href="https://www.vedomosti.ru/business/articles/2025/04/23/1106068-startap-neiry-razrabativaet-neiroimplanti-dlya-korov" target="_blank" rel="noopener">
+        <div class="src"><b>Ведомости</b><span>23 APR 2025</span></div><h3>Стартап Neiry разрабатывает нейроимпланты для коров для увеличения надоев</h3><p>Инвазивные нейростимуляторы для сельского хозяйства и «умных животных».</p></a>
+      <a class="reveal" href="https://ria.ru/20241107/krysy-1982337377.html" target="_blank" rel="noopener">
+        <div class="src"><b>РИА Новости</b><span>27 NOV 2024</span></div><h3>Российские учёные первыми в мире подключили мозг крысы к ИИ</h3><p>Совместный эксперимент Neiry и учёных МГУ.</p></a>
+    </div>
+    <a class="btn ghost more" href="https://neiry.ru/pressa" target="_blank" rel="noopener">Смотреть все</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <span class="logo">нейри</span>
+        АО «Нейрореволюция»<br>
+        г. Москва, ул. Бакунинская, д. 73, стр. 2<br>
+        ИНН 9701255148 ОГРН 1237700501268<br><br>
+        <a href="mailto:hello@neiry-bci.com">hello@neiry-bci.com</a><br>
+        <a href="mailto:pr@neiry-bci.com">pr@neiry-bci.com</a>
+      </div>
+      <ul>
+        <li><a href="https://neiry.ru/" target="_blank" rel="noopener">Для бизнеса</a></li>
+        <li><a href="https://neiry.ru/" target="_blank" rel="noopener">Карьера</a></li>
+        <li><a href="https://neiry.ru/investors" target="_blank" rel="noopener">Инвесторам</a></li>
+        <li><a href="https://neiry.ru/pressa" target="_blank" rel="noopener">Пресс-центр</a></li>
+        <li><a href="https://t.me/NeiryEquityBot?start=neiry-website" target="_blank" rel="noopener">InfoBot</a></li>
+      </ul>
+      <ul>
+        <li>Мы — ИТ-компания</li>
+        <li>Пользовательское соглашение</li>
+        <li>Политика конфиденциальности</li>
+        <li>Уведомление о немедицинских целях</li>
+        <li>Социальная ответственность</li>
+      </ul>
+    </div>
+    <div class="copy">2017–2026 © Нейри</div>
+  </div>
+</footer>
+
+<script>
+const h=document.getElementById('hdr');
+addEventListener('scroll',()=>h.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

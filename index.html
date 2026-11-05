@@ -30,23 +30,25 @@ img{max-width:100%;display:block}
 
 /* hero */
 .hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:120px 0 80px}
-.hero svg.bg{position:absolute;right:3%;top:11%;width:min(600px,92vw);opacity:.95;pointer-events:none}
+.hero svg.bg{position:absolute;right:-1%;top:10%;width:min(820px,110vw);opacity:.95;pointer-events:none}
 .hero .eeg{animation:eeg 6s linear infinite}
 @keyframes eeg{to{transform:translateX(-216px)}}
+.hero .pulse path{stroke-dasharray:10 600;stroke-dashoffset:610;animation:pulse 3s linear infinite;opacity:.9}
+@keyframes pulse{to{stroke-dashoffset:0}}
 .hero .led{animation:led 1.6s ease-in-out infinite}
 @keyframes led{50%{opacity:.25}}
 .hero h1{font-size:clamp(88px,18vw,240px);font-weight:800;line-height:.85;letter-spacing:-.06em}
 .hero .cta{margin-top:36px}
 .hero .content{position:relative;z-index:2}
 
-@media(prefers-reduced-motion:reduce){.hero .eeg,.hero .led{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero .eeg,.hero .pulse path,.hero .led{animation:none}.hero .pulse{display:none}}
 </style>
 </head>
 <body>
 
 <section class="hero">
-  <!-- векторная иллюстрация: чип ЭЭГ и экран с живыми сигналами -->
-  <svg class="bg" viewBox="200 40 540 480" fill="none" aria-hidden="true">
+  <!-- векторная иллюстрация: плата ЭЭГ-усилителя с живыми сигналами -->
+  <svg class="bg" viewBox="0 0 800 700" fill="none" aria-hidden="true">
       <defs>
       <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#885c30"/><stop offset=".35" stop-color="#e7b769"/>
@@ -59,10 +61,60 @@ img{max-width:100%;display:block}
       <mask id="scrMask"><rect x="486" y="118" width="216" height="330" fill="url(#fadeR)"/></mask>
       <radialGradient id="glow"><stop offset="0" stop-color="#e7b769" stop-opacity=".3"/><stop offset="1" stop-color="#e7b769" stop-opacity="0"/></radialGradient>
       <radialGradient id="led"><stop offset="0" stop-color="#fff6e0"/><stop offset=".4" stop-color="#e7b769"/><stop offset="1" stop-color="#e7b769" stop-opacity="0"/></radialGradient>
+      <linearGradient id="fadeBL" x1="0" y1="1" x2=".75" y2=".1"><stop offset="0" stop-color="#fff" stop-opacity=".25"/><stop offset=".55" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff"/></linearGradient>
+      <mask id="fade"><rect width="800" height="700" fill="url(#fadeBL)"/></mask>
       <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" stroke="#e7b769" stroke-opacity=".07" stroke-width=".6"/></pattern>
     </defs>
-    <circle cx="470" cy="280" r="238" fill="url(#glow)"/>
-    <g>
+    <circle cx="400" cy="290" r="330" fill="url(#glow)"/>
+    <g mask="url(#fade)">
+      <rect x="40" y="40" width="720" height="500" rx="30" fill="url(#pcb)" stroke="url(#gg)" stroke-width="1.5"/>
+      <rect x="40" y="40" width="720" height="500" rx="30" fill="url(#grid)"/>
+      <rect x="52" y="52" width="696" height="476" rx="22" stroke="#e7b769" stroke-opacity=".18" stroke-dasharray="2 6"/>
+      <circle cx="72" cy="72" r="10" stroke="url(#gg)" stroke-width="2.5"/><circle cx="72" cy="72" r="4" fill="#000"/>
+      <circle cx="728" cy="72" r="10" stroke="url(#gg)" stroke-width="2.5"/><circle cx="728" cy="72" r="4" fill="#000"/>
+      <circle cx="72" cy="508" r="10" stroke="url(#gg)" stroke-width="2.5"/><circle cx="72" cy="508" r="4" fill="#000"/>
+      <circle cx="728" cy="508" r="10" stroke="url(#gg)" stroke-width="2.5"/><circle cx="728" cy="508" r="4" fill="#000"/>
+      <g stroke="url(#gg)" stroke-width="1.6" stroke-linejoin="round" opacity=".85">
+        <path d="M122 118H134.5L233.5 217H242"/>
+        <path d="M122 164H144.5L215.5 235H242"/>
+        <path d="M122 210H154.5L197.5 253H242"/>
+        <path d="M122 256H164.5L179.5 271H242"/>
+        <path d="M122 302H165.5L178.5 289H242"/>
+        <path d="M122 348H155.5L196.5 307H242"/>
+        <path d="M122 394H145.5L214.5 325H242"/>
+        <path d="M122 440H135.5L232.5 343H242"/>
+      </g>
+      <g class="pulse" stroke="#fff3d6" stroke-width="2.2" stroke-linecap="round">
+        <path d="M122 118H134.5L233.5 217H242" style="animation-delay:-0s"/>
+        <path d="M122 164H144.5L215.5 235H242" style="animation-delay:-0.4s"/>
+        <path d="M122 210H154.5L197.5 253H242" style="animation-delay:-0.7s"/>
+        <path d="M122 256H164.5L179.5 271H242" style="animation-delay:-1.1s"/>
+        <path d="M122 302H165.5L178.5 289H242" style="animation-delay:-1.5s"/>
+        <path d="M122 348H155.5L196.5 307H242" style="animation-delay:-1.9s"/>
+        <path d="M122 394H145.5L214.5 325H242" style="animation-delay:-2.2s"/>
+        <path d="M122 440H135.5L232.5 343H242" style="animation-delay:-2.6s"/>
+      </g>
+      <g font-family="Manrope,system-ui,sans-serif" font-size="11" font-weight="700" fill="#9a9288" text-anchor="end">
+        <text x="92" y="122">Fp1</text>
+        <text x="92" y="168">Fp2</text>
+        <text x="92" y="214">F3</text>
+        <text x="92" y="260">F4</text>
+        <text x="92" y="306">C3</text>
+        <text x="92" y="352">C4</text>
+        <text x="92" y="398">O1</text>
+        <text x="92" y="444">O2</text>
+      </g>
+      <g>
+        <circle cx="110" cy="118" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="118" r="4.5" fill="#e7b769"/>
+        <circle cx="110" cy="164" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="164" r="4.5" fill="#e7b769"/>
+        <circle cx="110" cy="210" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="210" r="4.5" fill="#e7b769"/>
+        <circle cx="110" cy="256" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="256" r="4.5" fill="#e7b769"/>
+        <circle cx="110" cy="302" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="302" r="4.5" fill="#e7b769"/>
+        <circle cx="110" cy="348" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="348" r="4.5" fill="#e7b769"/>
+        <circle cx="110" cy="394" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="394" r="4.5" fill="#e7b769"/>
+        <circle cx="110" cy="440" r="11" fill="#0b0907" stroke="url(#gg)" stroke-width="2"/><circle cx="110" cy="440" r="4.5" fill="#e7b769"/>
+      </g>
+      <text x="110" y="478" font-family="Manrope,system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="2" fill="#e7b769" fill-opacity=".6" text-anchor="middle">EXG IN</text>
       <g fill="url(#gg)">
         <rect x="238" y="214" width="12" height="6" rx="1"/><rect x="420" y="214" width="12" height="6" rx="1"/>
         <rect x="269" y="183" width="6" height="12" rx="1"/><rect x="269" y="365" width="6" height="12" rx="1"/>
@@ -83,6 +135,33 @@ img{max-width:100%;display:block}
       </g>
       <rect x="250" y="195" width="170" height="170" rx="12" fill="url(#chipg)" stroke="url(#gg)" stroke-width="1.5"/>
       <rect x="264" y="209" width="142" height="142" rx="6" stroke="#e7b769" stroke-opacity=".25"/>
+      <circle cx="278" cy="223" r="5" fill="#e7b769" fill-opacity=".5"/>
+      <g font-family="Manrope,system-ui,sans-serif" text-anchor="middle">
+      <text x="335" y="278.0" font-size="26" font-weight="800" letter-spacing="-1" fill="url(#gg)">neiry</text>
+      <text x="335" y="300.0" font-size="10" font-weight="700" letter-spacing="2.5" fill="#9a9288">EEG · 24 BIT</text>
+      <text x="335" y="316.0" font-size="9" font-weight="500" letter-spacing="1.5" fill="#5d564d">8CH · 1 kSPS</text>
+    </g>
+      <g stroke="url(#gg)" stroke-width="1.2" opacity=".6" stroke-linejoin="round">
+        <path d="M272 183V161l-14 -14V80"/>
+        <path d="M290 377V397l14 14V497"/>
+        <path d="M308 183V157l-14 -14V86"/>
+        <path d="M326 377V401l14 14V491"/>
+        <path d="M344 183V153l-14 -14V92"/>
+        <path d="M362 377V405l14 14V485"/>
+        <path d="M380 183V149l-14 -14V98"/>
+        <path d="M398 377V409l14 14V479"/>
+      </g>
+      <g>
+        <rect x="206" y="124" width="18" height="9" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="206" y="124" width="4" height="9" fill="#e7b769" fill-opacity=".7"/><rect x="220" y="124" width="4" height="9" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="232" y="100" width="18" height="9" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="232" y="100" width="4" height="9" fill="#e7b769" fill-opacity=".7"/><rect x="246" y="100" width="4" height="9" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="330" y="92" width="9" height="18" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="330" y="92" width="9" height="4" fill="#e7b769" fill-opacity=".7"/><rect x="330" y="106" width="9" height="4" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="400" y="112" width="18" height="9" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="400" y="112" width="4" height="9" fill="#e7b769" fill-opacity=".7"/><rect x="414" y="112" width="4" height="9" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="214" y="430" width="18" height="9" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="214" y="430" width="4" height="9" fill="#e7b769" fill-opacity=".7"/><rect x="228" y="430" width="4" height="9" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="300" y="470" width="9" height="18" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="300" y="470" width="9" height="4" fill="#e7b769" fill-opacity=".7"/><rect x="300" y="484" width="9" height="4" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="372" y="444" width="18" height="9" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="372" y="444" width="4" height="9" fill="#e7b769" fill-opacity=".7"/><rect x="386" y="444" width="4" height="9" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="440" y="486" width="18" height="9" rx="1.5" fill="#2a251f" stroke="#e7b769" stroke-opacity=".5"/><rect x="440" y="486" width="4" height="9" fill="#e7b769" fill-opacity=".7"/><rect x="454" y="486" width="4" height="9" fill="#e7b769" fill-opacity=".7"/>
+        <rect x="438" y="420" width="34" height="16" rx="8" fill="#141210" stroke="url(#gg)" stroke-width="1.2"/>
+      </g>
       <g stroke="url(#gg)" stroke-width="1.4" stroke-linejoin="round" opacity=".8">
         <path d="M432 217H440L522 135H478"/>
         <path d="M432 235H442L502 175H478"/>
@@ -104,6 +183,10 @@ img{max-width:100%;display:block}
         <path d="M654 118V448"/>
         <path d="M678 118V448"/>
       </g>
+      <g font-family="Manrope,system-ui,sans-serif" font-weight="700">
+      <text x="494" y="113" font-size="8.5" letter-spacing="1.5" fill="#9a9288">EEG · LIVE</text>
+      <text x="694" y="113" font-size="8.5" letter-spacing="1" fill="#e7b769" text-anchor="end">250 Hz</text>
+    </g>
       <circle class="led" cx="566" cy="110" r="7" fill="url(#led)"/>
       <g mask="url(#scrMask)">
         <g class="eeg" stroke="url(#gg)" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
@@ -117,6 +200,20 @@ img{max-width:100%;display:block}
           <path d="M486 413.8L489 409.7L492 411.1L495 417.1L498 427L501 425.3L504 419.1L507 413.1L510 413.2L513 416.5L516 414.8L519 424.9L522 420.1L525 411.8L528 397.6L531 399.4L534 420.7L537 417.3L540 416.3L543 414.1L546 407.3L549 406.5L552 408.5L555 417.9L558 419.9L561 423.9L564 417L567 409.7L570 413.1L573 417.5L576 426.7L579 423.8L582 419.5L585 414.7L588 412.8L591 408.8L594 414.1L597 425L600 415.8L603 413.1L606 403.5L609 404.4L612 412.9L615 412.7L618 419.8L621 414.6L624 411.9L627 406.3L630 411L633 418L636 420.8L639 430.1L642 414.5L645 413.1L648 414.3L651 415.1L654 426.1L657 419.2L660 422.1L663 416.1L666 405.7L669 407.5L672 413.4L675 420.9L678 416.2L681 411L684 406.3L687 405L690 409.5L693 415.3L696 419.9L699 419.2L702 413.8L705 409.7L708 411.1L711 417.1L714 427L717 425.3L720 419.1L723 413.1L726 413.2L729 416.5L732 414.8L735 424.9L738 420.1L741 411.8L744 397.6L747 399.4L750 420.7L753 417.3L756 416.3L759 414.1L762 407.3L765 406.5L768 408.5L771 417.9L774 419.9L777 423.9L780 417L783 409.7L786 413.1L789 417.5L792 426.7L795 423.8L798 419.5L801 414.7L804 412.8L807 408.8L810 414.1L813 425L816 415.8L819 413.1L822 403.5L825 404.4L828 412.9L831 412.7L834 419.8L837 414.6L840 411.9L843 406.3L846 411L849 418L852 420.8L855 430.1L858 414.5L861 413.1L864 414.3L867 415.1L870 426.1L873 419.2L876 422.1L879 416.1L882 405.7L885 407.5L888 413.4L891 420.9L894 416.2L897 411L900 406.3L903 405L906 409.5L909 415.3L912 419.9L915 419.2L918 413.8"/>
         </g>
       </g>
+      <g font-family="Manrope,system-ui,sans-serif" font-size="8" font-weight="700" fill="#5d564d">
+        <text x="490" y="123">Fp1</text>
+        <text x="490" y="163">Fp2</text>
+        <text x="490" y="203">F3</text>
+        <text x="490" y="243">F4</text>
+        <text x="490" y="283">C3</text>
+        <text x="490" y="323">C4</text>
+        <text x="490" y="363">O1</text>
+        <text x="490" y="403">O2</text>
+      </g>
+      <g font-family="Manrope,system-ui,sans-serif" font-weight="700" fill="#e7b769" fill-opacity=".45" letter-spacing="2">
+      <text x="560" y="500" font-size="10">NEIRY · BCI-8 · REV 2.6</text>
+      <text x="560" y="516" font-size="8" fill-opacity=".3">MADE IN RUSSIA</text>
+    </g>
       </g>
     </svg>
   <div class="wrap content">
